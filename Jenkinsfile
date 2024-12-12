@@ -11,7 +11,7 @@ pipeline {
     stage('Clone Repo') {
       steps {
         // Clone the repository (done automatically by Jenkins, but for clarity)
-        git 'https://github.com/apeiroconsultant/api-mock-repo.git
+        git 'https://github.com/apeiroconsultant/api-mock-repo.git'
       }
     }
 
