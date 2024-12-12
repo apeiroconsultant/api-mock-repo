@@ -11,7 +11,7 @@ pipeline {
     stage('Clone Repo') {
       steps {
         // Clone the repository (done automatically by Jenkins, but for clarity)
-        git 'https://github.com/your-org/your-repo.git'
+        git 'https://github.com/apeiroconsultant/api-mock-repo.git
       }
     }
 
@@ -19,7 +19,7 @@ pipeline {
       steps {
         script {
           // Install WireMock npm dependencies
-          sh 'cd wiremock && npm install'
+			cd wiremock && npm install
         }
       }
     }
@@ -28,7 +28,7 @@ pipeline {
       steps {
         script {
           // Run npm script to generate mocks from the API spec
-          sh 'cd wiremock && npm run start'
+          cd wiremock && npm run start
         }
       }
     }
@@ -36,13 +36,15 @@ pipeline {
     stage('Start WireMock Docker Container') {
       steps {
         script {
-          // Run WireMock Docker container with mock mappings mounted
-          sh """
-            docker run -d -p \${MOCK_PORT}:9090 \
-            -v \$(pwd)/wiremock/mappings:/home/wiremock/mappings \
-            -v \$(pwd)/wiremock/__files:/home/wiremock/__files \
-            \${DOCKER_IMAGE}
-          """
+                    // Use Windows-compatible commands if on Windows agent
+                    def dockerCommand = """
+                        docker run -d -p ${MOCK_PORT}:9090 ^
+                        -v ${pwd()}/wiremock/mappings:/home/wiremock/mappings ^
+                        -v ${pwd()}/wiremock/__files:/home/wiremock/__files ^
+                        ${DOCKER_IMAGE}
+                    """
+                    echo "Running Docker command: ${dockerCommand}"
+                    bat dockerCommand // Using `bat` for Windows shell commands
         }
       }
     }
@@ -52,7 +54,7 @@ pipeline {
         script {
           // Place generated mock mappings into the mappings folder
           echo "Deploying mock mappings"
-          sh 'cp -r wiremock/mappings/* /tmp/mappings/'
+          bat 'copy wiremock\\mappings\\* C:\\temp\\mappings\\'
         }
       }
     }
@@ -61,7 +63,7 @@ pipeline {
       steps {
         script {
           // Stop WireMock Docker container after test completion
-          sh 'docker ps -q --filter ancestor=wiremock/wiremock:latest | xargs docker stop'
+          bat 'docker ps -q --filter ancestor=wiremock/wiremock:latest | xargs docker stop'
         }
       }
     }
