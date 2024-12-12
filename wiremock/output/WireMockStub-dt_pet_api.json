@@ -1,7 +1,7 @@
 {
   "mappings": [
     {
-      "id": "e2b166cc-385b-4b97-a670-3142a4629c31",
+      "id": "7a0dc608-d1c7-4e67-bca2-62e32251a9a5",
       "request": {
         "method": "GET",
         "urlPattern": "/pets",
@@ -13,14 +13,14 @@
       },
       "response": {
         "status": 200,
-        "body": "{\"uuid\":\"ff968d76-559f-4dc8-8fe5-365d4f1c9599\",\"pets\":[{\"id\":1,\"name\":\"Dog\"},{\"id\":2,\"name\":\"Cat\"}]}",
+        "body": "{\"uuid\":\"634bbd63-01aa-4f7f-a7e2-02b696095c92\",\"pets\":[{\"id\":1,\"name\":\"Dog\"},{\"id\":2,\"name\":\"Cat\"}]}",
         "headers": {
           "Content-Type": "application/json"
         }
       }
     },
     {
-      "id": "2d08a241-e532-4e91-8cf1-6117748caf6f",
+      "id": "31084cf0-a43c-40c2-99a7-fa20fac430ea",
       "request": {
         "method": "GET",
         "urlPattern": "/pets",
@@ -32,14 +32,14 @@
       },
       "response": {
         "status": 400,
-        "body": "{\"uuid\":\"1af7e559-9d6a-4c7c-ac40-36b138512d0f\",\"error\":{\"erroCode\":400,\"errorMesaage\":\"Bad Request\"}}",
+        "body": "{\"uuid\":\"c604515a-2576-4a56-83bc-3f079f5d9bfc\",\"error\":{\"erroCode\":400,\"errorMesaage\":\"Bad Request\"}}",
         "headers": {
           "Content-Type": "application/json"
         }
       }
     },
     {
-      "id": "1978ca09-001f-49c8-8a21-f9d2fcc449bb",
+      "id": "fbdcf0f4-5abc-491b-afac-faa1094bd957",
       "request": {
         "method": "GET",
         "urlPattern": "/pets",
@@ -51,14 +51,14 @@
       },
       "response": {
         "status": 500,
-        "body": "{\"0\":{\"error\":{\"erroCode\":500,\"errorMesaage\":\"Internal Server Error\"},\"index\":0},\"uuid\":\"6f3c8204-b618-4964-a5f4-4f7dd51fbd0a\"}",
+        "body": "{\"0\":{\"error\":{\"erroCode\":500,\"errorMesaage\":\"Internal Server Error\"},\"index\":0},\"uuid\":\"a230ce45-5acf-4dd5-b0c9-3a2446b87351\"}",
         "headers": {
           "Content-Type": "application/json"
         }
       }
     },
     {
-      "id": "12e8888b-4864-4906-8413-ebf22b0e64e4",
+      "id": "4d4fcef2-c223-49c0-845f-cfaa6db141d0",
       "request": {
         "method": "GET",
         "urlPattern": "/pets/1234",
@@ -70,14 +70,14 @@
       },
       "response": {
         "status": 200,
-        "body": "{\"0\":{\"id\":1,\"name\":\"Dog\",\"index\":0},\"1\":{\"id\":2,\"name\":\"Cat\",\"index\":1},\"uuid\":\"57abe295-ee28-46e2-9ef0-09e7159752de\"}",
+        "body": "{\"0\":{\"id\":1,\"name\":\"Dog\",\"index\":0},\"1\":{\"id\":2,\"name\":\"Cat\",\"index\":1},\"uuid\":\"de7fb524-a819-4c37-85e9-500c84f69bea\"}",
         "headers": {
           "Content-Type": "application/json"
         }
       }
     },
     {
-      "id": "daaa4048-46a9-4c4f-9586-6997325e6438",
+      "id": "e9785d1f-1c40-4ef0-b856-1359f8135b5e",
       "request": {
         "method": "GET",
         "urlPattern": "/pets/1234",
@@ -89,14 +89,14 @@
       },
       "response": {
         "status": 400,
-        "body": "{\"0\":{\"error\":{\"erroCode\":400,\"errorMesaage\":\"Invalid Pet Id\"},\"index\":0},\"uuid\":\"1eb05c50-0958-4336-9089-20500207ec48\"}",
+        "body": "{\"0\":{\"error\":{\"erroCode\":400,\"errorMesaage\":\"Invalid Pet Id\"},\"index\":0},\"uuid\":\"2ae09f28-0d70-40ab-b802-67955aef8e9c\"}",
         "headers": {
           "Content-Type": "application/json"
         }
       }
     },
     {
-      "id": "a490701d-4b32-4e6a-9247-b6c17f278ea8",
+      "id": "fade52fe-db27-44a6-a70f-0074867e7893",
       "request": {
         "method": "GET",
         "urlPattern": "/pets/1234",
@@ -108,14 +108,14 @@
       },
       "response": {
         "status": 404,
-        "body": "{\"uuid\":\"b17bbbec-815f-4754-92af-488ec484352a\",\"error\":{\"erroCode\":404,\"errorMesaage\":\"no data for given pet\"}}",
+        "body": "{\"uuid\":\"7f569b4d-a2ef-4565-a7e3-49392ef59dcf\",\"error\":{\"erroCode\":404,\"errorMesaage\":\"no data for given pet\"}}",
         "headers": {
           "Content-Type": "application/json"
         }
       }
     },
     {
-      "id": "a30a9baa-dabe-4f89-8923-0a49506e2a93",
+      "id": "b835e703-0e64-4d1e-b7be-785fca1f2424",
       "request": {
         "method": "GET",
         "urlPattern": "/pets/1234",
@@ -127,7 +127,7 @@
       },
       "response": {
         "status": 500,
-        "body": "{\"uuid\":\"841ded52-fd77-40b1-9475-cefc3b7475a0\",\"error\":{\"erroCode\":500,\"errorMesaage\":\"Internal Server Error\"}}",
+        "body": "{\"uuid\":\"5e598012-8e0d-4f38-8e40-aca04387ba1f\",\"error\":{\"erroCode\":500,\"errorMesaage\":\"Internal Server Error\"}}",
         "headers": {
           "Content-Type": "application/json"
         }

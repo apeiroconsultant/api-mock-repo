@@ -1,12 +1,12 @@
 pipeline {
   agent any
-  
+
   environment {
     DOCKER_IMAGE = 'wiremock/wiremock:latest'  // Docker image for WireMock
     MAPPING_DIR = 'mappings'  // Directory to store WireMock mappings
     MOCK_PORT = 9090
   }
-  
+
   stages {
     stage('Clone Repo') {
       steps {
@@ -19,7 +19,7 @@ pipeline {
       steps {
         script {
           // Install WireMock npm dependencies
-			cd wiremock && npm install
+          bat 'cd wiremock && npm install'
         }
       }
     }
@@ -28,7 +28,7 @@ pipeline {
       steps {
         script {
           // Run npm script to generate mocks from the API spec
-          cd wiremock && npm run start
+          bat 'cd wiremock && node generateWireMockStubs.js'
         }
       }
     }
@@ -36,15 +36,15 @@ pipeline {
     stage('Start WireMock Docker Container') {
       steps {
         script {
-                    // Use Windows-compatible commands if on Windows agent
-                    def dockerCommand = """
-                        docker run -d -p ${MOCK_PORT}:9090 ^
-                        -v ${pwd()}/wiremock/mappings:/home/wiremock/mappings ^
-                        -v ${pwd()}/wiremock/__files:/home/wiremock/__files ^
-                        ${DOCKER_IMAGE}
-                    """
-                    echo "Running Docker command: ${dockerCommand}"
-                    bat dockerCommand // Using `bat` for Windows shell commands
+          // Use Windows-compatible commands for Docker and paths
+          def dockerCommand = """
+            docker run -d -p ${MOCK_PORT}:9090 ^
+            -v ${pwd()}\\wiremock\\mappings:/home/wiremock/mappings ^
+            -v ${pwd()}\\wiremock\\__files:/home/wiremock/__files ^
+            ${DOCKER_IMAGE}
+          """
+          echo "Running Docker command: ${dockerCommand}"
+          bat dockerCommand // Using `bat` for Windows shell commands
         }
       }
     }
@@ -63,12 +63,12 @@ pipeline {
       steps {
         script {
           // Stop WireMock Docker container after test completion
-          bat 'docker ps -q --filter ancestor=wiremock/wiremock:latest | xargs docker stop'
+          bat 'docker ps -q --filter ancestor=wiremock/wiremock:latest | for /f "tokens=*" %i in ('docker ps -q --filter ancestor=wiremock/wiremock:latest') do docker stop %i'
         }
       }
     }
   }
-  
+
   post {
     always {
       cleanWs()
