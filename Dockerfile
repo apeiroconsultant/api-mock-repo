@@ -5,4 +5,4 @@ FROM wiremock/wiremock:latest
 COPY ./wiremock/mappings /home/wiremock/mappings
 
 # Expose the default WireMock port
-EXPOSE 8080
+EXPOSE 9090
