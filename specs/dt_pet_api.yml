@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  title: pet services
+  title: Sample Pet Service API
   version: 1.0.0
 paths:
   /pets:
