@@ -4,7 +4,7 @@ pipeline {
   environment {
     DOCKER_IMAGE = 'wiremock/wiremock:latest'  // Docker image for WireMock
     MAPPING_DIR = 'mappings'  // Directory to store WireMock mappings
-    MOCK_PORT = 8080
+    MOCK_PORT = 9090
   }
   
   stages {
