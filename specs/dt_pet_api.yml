@@ -5,7 +5,7 @@ info:
 paths:
   /pets:
     get:
-      summary: Get all pets
+      summary: Get All Pets
       responses:
         '200':
           description: A list of pets
