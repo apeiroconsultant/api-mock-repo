@@ -38,10 +38,10 @@ pipeline {
         script {
           // Run WireMock Docker container with mock mappings mounted
           sh """
-            docker run -d -p ${MOCK_PORT}:8080 \
-            -v $(pwd)/wiremock/mappings:/home/wiremock/mappings \
-            -v $(pwd)/wiremock/__files:/home/wiremock/__files \
-            ${DOCKER_IMAGE}
+            docker run -d -p \${MOCK_PORT}:9090 \
+            -v \$(pwd)/wiremock/mappings:/home/wiremock/mappings \
+            -v \$(pwd)/wiremock/__files:/home/wiremock/__files \
+            \${DOCKER_IMAGE}
           """
         }
       }
