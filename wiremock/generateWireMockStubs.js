@@ -159,5 +159,5 @@ function generateStubsFromOpenApiFiles(inputDir, outputDir = './output') {
 }
 
 // Example usage
-const inputDir = './specs';  // Directory containing OpenAPI spec files
+const inputDir = '../specs';  // Directory containing OpenAPI spec files
 generateStubsFromOpenApiFiles(inputDir);
