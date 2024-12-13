@@ -63,7 +63,7 @@ pipeline {
       steps {
         script {
           // Stop WireMock Docker container after test completion
-          bat 'docker ps -q --filter ancestor=wiremock/wiremock:latest | for /f "tokens=*" %i in ('docker ps -q --filter ancestor=wiremock/wiremock:latest') do docker stop %i'
+          bat 'docker ps -q --filter ancestor=wiremock/wiremock| for /f "tokens=*" %i in ('docker ps -q --filter ancestor=wiremock/wiremock:latest') do docker stop %i'
         }
       }
     }
