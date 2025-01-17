@@ -21,7 +21,11 @@ The pipeline includes the following key stages:
      npm install
      ```
 
-2. **Generate Mock Configurations**:
+2. **Prepare Specifications**:
+   - Add the consumer specifications in the `consumer` directory.
+   - Add the target system specifications in the `target` directory.
+
+3. **Generate Mock Configurations**:
    - Creates WireMock stubs and Postman collections based on the provided API specifications.
    - Commands executed:
      ```bash
@@ -30,7 +34,7 @@ The pipeline includes the following key stages:
      node generatePostmanCollections.js
      ```
 
-3. **Start WireMock Docker Container**:
+4. **Start WireMock Docker Container**:
    - Runs a Docker container for hosting the mock services.
    - Commands executed:
      ```bash
@@ -40,7 +44,7 @@ The pipeline includes the following key stages:
        wiremock/wiremock:latest
      ```
 
-4. **Test the Service**:
+5. **Test the Service**:
    - Executes Postman collection tests using Newman to ensure API integration works as expected.
    - Commands executed:
      ```bash
@@ -48,7 +52,7 @@ The pipeline includes the following key stages:
      npx newman run dt_pet_api-postman-collection.json
      ```
 
-5. **Cleanup**:
+6. **Cleanup**:
    - Stops the running WireMock Docker containers to free up resources.
    - Commands executed:
      ```powershell
@@ -58,7 +62,7 @@ The pipeline includes the following key stages:
      }
      ```
 
-6. **Post Actions**:
+7. **Post Actions**:
    - Cleans the Jenkins workspace to prepare for the next build.
 
 ## How to Use
@@ -79,6 +83,7 @@ The pipeline includes the following key stages:
 
 2. Run the Jenkins pipeline. The pipeline will:
    - Install dependencies.
+   - Add specifications for consumers and targets.
    - Generate mock configurations and Postman collections.
    - Start the mock service in a Docker container.
    - Execute integration tests.
@@ -91,7 +96,7 @@ The pipeline includes the following key stages:
 - **`lib/`**: Contains scripts for generating mocks and Postman collections.
 - **`wiremock/`**: Includes mappings and files for WireMock services.
 - **`consumer`**: Contains the specifications and Postman collections for testing consumer APIs.
-- **`target`**: Contains the target application specifications to creat the wiremock stubs.
+- **`target`**: Contains the target application specifications to create the wiremock stubs.
 - **`Jenkinsfile`**: Defines the CI/CD pipeline for automation.
 - **`Dockerfile`**: Configuration for creating a Docker image of the mock service.
 
