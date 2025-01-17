@@ -1,0 +1,159 @@
+openapi: "3.0.0"
+info:
+  title:  get Public Pet Details
+  version: "1.0.0"
+  description: |
+
+    ###  
+      **getPublicPetDetails** `GEINT_0001`- 
+      ### Use cases
+      get Public Pet Details
+   
+
+
+servers:
+  - url: http://localhost:9090
+    description: Dev server
+paths:
+  /pets:
+    get:
+      summary: Get All Pets
+      parameters:
+        - name: X-WIREMOCK-API-ClientRef
+          in: header
+          required: true
+          schema:
+              type: string
+              example: '200'
+      responses:
+        '200':
+          description: A list of pets
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                    pets:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            name:
+                              type: string
+              example:
+                pets:
+                  - id: 1
+                    name: Dog
+                  - id: 2
+                    name: Cat
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string            
+              example:
+                error:
+                    erroCode: 400
+                    errorMesaage: Bad Request
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string             
+              example:
+                - error:
+                    erroCode: 500
+                    errorMesaage: Internal Server Error
+  /pets/{id}:
+    get:
+      summary: Get a specific pet by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          example: 1234
+        - name: X-WIREMOCK-API-ClientRef
+          in: header
+          required: true
+          schema:
+              type: string
+              example: '200'             
+      responses:
+        '200':
+          description: A Specific Pet Details
+          content:
+            application/json:
+              schema:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+              example:
+                
+                - id: 1
+                  name: Dog
+                - id: 2
+                  name: Cat
+        '404':
+          description: Pet Not Found
+          content:
+            application/json:
+              schema:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string            
+              example:
+                 error:
+                    erroCode: 404
+                    errorMesaage: no data for given pet
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string            
+              example:
+                - error:
+                    erroCode: 400
+                    errorMesaage: Invalid Pet Id
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string             
+              example:
+                error:
+                    erroCode: 500
+                    errorMesaage: Internal Server Error

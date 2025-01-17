@@ -1,0 +1,24 @@
+{
+  "name": "wiremock-service",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@readme/openapi-parser": "^2.6.0",
+    "casual": ">=1.6.2",
+    "express": ">=4.21.2",
+    "fs": ">=0.0.1-security",
+    "newman": ">=6.2.1",
+    "openapi-to-postmanv2": ">=4.24.0",
+    "path": ">=0.12.7",
+    "uuid": ">=11.0.3",
+    "wiremock-client": ">=1.0.36",
+    "yamljs": ">=0.3.0"
+  }
+}
